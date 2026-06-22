@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Eduardo Garcia · Mechanical Engineer · Simulation &amp; Design</title>
+<meta name="description" content="Eduardo Garcia, mechanical engineering student (BSME, UT Tyler). FEA, simulation, kinematic design, and mechatronics portfolio." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Cpath d='M18 44V20h9c6 0 10 4 10 12s-4 12-10 12zm7-6h2c2.6 0 4-2 4-6s-1.4-6-4-6h-2z' fill='%2338bdf8'/%3E%3Ccircle cx='44' cy='40' r='4' fill='%23818cf8'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   LIQUID GLASS PORTFOLIO  ·  Eduardo Garcia
+   Vanilla CSS · glassmorphism · dark/light slate theme
+   ============================================================ */
+
+:root{
+  --font-sans:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --font-display:"Sora","Inter",sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --accent:#38bdf8;          /* sky */
+  --accent-2:#818cf8;        /* indigo */
+  --accent-3:#22d3ee;        /* cyan */
+  --accent-warm:#f0abfc;     /* subtle magenta sheen */
+
+  --radius:22px;
+  --radius-sm:14px;
+  --maxw:1200px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ---------- DARK THEME (default) ---------- */
+html[data-theme="dark"]{
+  --bg:#060912;
+  --bg-2:#0a1020;
+  --text:#e9eef7;
+  --text-muted:#9fb0ca;
+  --text-faint:#6f80a0;
+
+  --glass-bg:linear-gradient(135deg,rgba(255,255,255,.085),rgba(255,255,255,.022));
+  --glass-bg-strong:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.04));
+  --glass-border:rgba(255,255,255,.14);
+  --glass-border-bright:rgba(255,255,255,.30);
+  --glass-shadow:0 18px 50px -12px rgba(2,6,18,.7), inset 0 1px 0 rgba(255,255,255,.18);
+  --glass-shadow-hover:0 30px 70px -16px rgba(2,8,30,.8), inset 0 1px 0 rgba(255,255,255,.30);
+
+  --chip-bg:rgba(255,255,255,.06);
+  --chip-border:rgba(255,255,255,.12);
+  --hairline:rgba(255,255,255,.10);
+  --nav-bg:rgba(8,12,22,.55);
+  --scrim:rgba(6,9,18,.72);
+}
+
+/* ---------- LIGHT THEME ---------- */
+html[data-theme="light"]{
+  --bg:#dde5f1;
+  --bg-2:#eaf0fa;
+  --text:#0e1726;
+  --text-muted:#42536e;
+  --text-faint:#697a96;
+
+  --glass-bg:linear-gradient(135deg,rgba(255,255,255,.72),rgba(255,255,255,.42));
+  --glass-bg-strong:linear-gradient(135deg,rgba(255,255,255,.88),rgba(255,255,255,.6));
+  --glass-border:rgba(255,255,255,.85);
+  --glass-border-bright:rgba(255,255,255,1);
+  --glass-shadow:0 18px 44px -16px rgba(36,58,99,.32), inset 0 1px 0 rgba(255,255,255,.9);
+  --glass-shadow-hover:0 28px 60px -18px rgba(36,58,99,.42), inset 0 1px 0 rgba(255,255,255,1);
+
+  --chip-bg:rgba(255,255,255,.55);
+  --chip-border:rgba(120,140,180,.28);
+  --hairline:rgba(40,60,100,.14);
+  --nav-bg:rgba(238,243,252,.6);
+  --scrim:rgba(225,233,245,.7);
+  --accent:#0284c7;
+  --accent-2:#5b63d6;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-sans);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  position:relative;
+  min-height:100vh;
+}
+
+/* ===========================================================
+   ANIMATED AURORA BACKGROUND  (fixed, behind everything)
+   =========================================================== */
+.bg-field{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
+  radial-gradient(1200px 700px at 80% -5%,rgba(56,189,248,.12),transparent 60%),
+  radial-gradient(1000px 800px at 0% 100%,rgba(129,140,248,.12),transparent 55%),
+  var(--bg);}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;mix-blend-mode:screen;animation:float 22s var(--ease) infinite alternate}
+html[data-theme="light"] .blob{mix-blend-mode:normal;opacity:.4;filter:blur(70px)}
+.blob.b1{width:50vw;height:50vw;left:-12vw;top:-10vw;background:radial-gradient(circle at 30% 30%,#38bdf8,transparent 65%)}
+.blob.b2{width:46vw;height:46vw;right:-14vw;top:6vh;background:radial-gradient(circle at 60% 40%,#818cf8,transparent 65%);animation-delay:-7s}
+.blob.b3{width:42vw;height:42vw;left:18vw;bottom:-22vw;background:radial-gradient(circle at 50% 50%,#22d3ee,transparent 60%);animation-delay:-13s}
+.blob.b4{width:30vw;height:30vw;right:8vw;bottom:-10vw;background:radial-gradient(circle at 50% 50%,#f0abfc,transparent 62%);animation-delay:-4s;opacity:.35}
+@keyframes float{
+  0%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(4vw,3vh) scale(1.12)}
+  100%{transform:translate(-3vw,-2vh) scale(.96)}
+}
+/* subtle grain overlay for depth */
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+@media (prefers-reduced-motion:reduce){.blob{animation:none}}
+
+/* ===========================================================
+   GLASS PRIMITIVE
+   =========================================================== */
+.glass{
+  position:relative;
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius);
+  box-shadow:var(--glass-shadow);
+  backdrop-filter:blur(22px) saturate(160%);
+  -webkit-backdrop-filter:blur(22px) saturate(160%);
+  overflow:hidden;
+}
+/* specular highlight sweep */
+.glass::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(120% 80% at 0% 0%,rgba(255,255,255,.18),transparent 42%);
+  opacity:.9;
+}
+/* top edge gleam */
+.glass::after{
+  content:"";position:absolute;left:8%;right:8%;top:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--glass-border-bright),transparent);
+}
+
+/* ===========================================================
+   LAYOUT HELPERS
+   =========================================================== */
+.wrap{width:min(92%,var(--maxw));margin-inline:auto}
+section{padding:clamp(70px,9vw,130px) 0;position:relative}
+.eyebrow{
+  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--accent);display:inline-flex;align-items:center;gap:.6rem;font-weight:500;margin-bottom:1.1rem;
+}
+.eyebrow::before{content:"";width:30px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
+h2.section-title{
+  font-family:var(--font-display);font-weight:800;line-height:1.05;letter-spacing:-.02em;
+  font-size:clamp(2rem,4.4vw,3.2rem);margin-bottom:1rem;
+}
+.section-intro{color:var(--text-muted);max-width:640px;font-size:1.06rem;margin-bottom:3.2rem}
+.grad{background:linear-gradient(115deg,var(--accent),var(--accent-2) 55%,var(--accent-warm));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ===========================================================
+   NAVBAR
+   =========================================================== */
+nav.bar{
+  position:fixed;top:14px;left:0;right:0;z-index:100;
+  width:min(94%,var(--maxw));margin-inline:auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.62rem .7rem .62rem 1.2rem;border-radius:60px;
+  background:var(--nav-bg);border:1px solid var(--glass-border);
+  box-shadow:var(--glass-shadow);
+  backdrop-filter:blur(20px) saturate(170%);-webkit-backdrop-filter:blur(20px) saturate(170%);
+  transition:top .4s var(--ease),box-shadow .4s var(--ease);
+}
+.brand{display:flex;align-items:center;gap:.7rem;font-family:var(--font-display);font-weight:800;
+  letter-spacing:-.01em;font-size:1.02rem;text-decoration:none;color:var(--text)}
+.brand .mark{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;flex:0 0 auto;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#04101f;font-weight:900;
+  box-shadow:0 6px 18px -4px rgba(56,189,248,.6),inset 0 1px 0 rgba(255,255,255,.5)}
+.brand small{display:block;font-family:var(--font-mono);font-weight:400;font-size:.62rem;
+  letter-spacing:.18em;color:var(--text-faint);text-transform:uppercase;margin-top:-2px}
+.nav-links{display:flex;align-items:center;gap:.2rem;list-style:none}
+.nav-links a{
+  text-decoration:none;color:var(--text-muted);font-size:.9rem;font-weight:500;
+  padding:.5rem .85rem;border-radius:40px;transition:color .25s,background .25s;position:relative;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--text);background:var(--chip-bg)}
+.nav-right{display:flex;align-items:center;gap:.55rem}
+.icon-btn{
+  width:40px;height:40px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  background:var(--chip-bg);border:1px solid var(--chip-border);color:var(--text);transition:.25s;
+}
+.icon-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.icon-btn svg{width:18px;height:18px}
+.btn{
+  --b:var(--accent);
+  display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;text-decoration:none;
+  font-weight:600;font-size:.9rem;padding:.62rem 1.15rem;border-radius:40px;white-space:nowrap;
+  color:#04101f;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  border:1px solid rgba(255,255,255,.25);
+  box-shadow:0 10px 26px -8px rgba(56,189,248,.55),inset 0 1px 0 rgba(255,255,255,.5);
+  transition:transform .25s var(--ease),box-shadow .25s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px -8px rgba(56,189,248,.7),inset 0 1px 0 rgba(255,255,255,.6)}
+.btn.ghost{
+  color:var(--text);background:var(--glass-bg-strong);
+  box-shadow:var(--glass-shadow);border:1px solid var(--glass-border);
+}
+.btn.ghost:hover{border-color:var(--accent)}
+.btn svg{width:16px;height:16px}
+.nav-toggle{display:none}
+
+/* ===========================================================
+   HERO
+   =========================================================== */
+.hero{padding-top:clamp(140px,18vh,210px);padding-bottom:clamp(50px,7vw,90px)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,4vw,4rem);align-items:center}
+.status-pill{
+  display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font-mono);font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);
+  padding:.45rem .9rem;border-radius:40px;background:var(--chip-bg);border:1px solid var(--chip-border);margin-bottom:1.7rem;
+}
+.dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 4px rgba(52,211,153,.18);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+.hero h1{
+  font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;line-height:1.02;
+  font-size:clamp(2.6rem,6.4vw,5rem);margin-bottom:1.4rem;
+}
+.hero h1 .line{display:block}
+.hero p.lead{font-size:clamp(1.05rem,1.7vw,1.28rem);color:var(--text-muted);max-width:560px;margin-bottom:2.2rem}
+.hero p.lead strong{color:var(--text);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.85rem;margin-bottom:2.4rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:1.6rem;font-size:.9rem;color:var(--text-faint)}
+.hero-meta b{color:var(--text);font-weight:600}
+.hero-meta .m{display:flex;align-items:center;gap:.5rem}
+.hero-meta svg{width:16px;height:16px;color:var(--accent)}
+
+/* hero visual */
+.hero-visual{padding:14px;border-radius:calc(var(--radius) + 6px)}
+.hero-visual figure{margin:0;border-radius:18px;overflow:hidden;position:relative;border:1px solid var(--hairline)}
+.hero-visual img{display:block;width:100%;height:auto;background:#0b1322}
+.hero-visual figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:1.4rem 1.1rem .9rem;
+  background:linear-gradient(0deg,rgba(4,9,20,.88),transparent);color:#dbe6f7;
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.05em;display:flex;justify-content:space-between;gap:1rem;
+}
+.hero-visual figcaption b{color:#fff}
+.float-stat{
+  position:absolute;display:flex;flex-direction:column;gap:.1rem;padding:.8rem 1rem;border-radius:16px;
+  background:var(--glass-bg-strong);border:1px solid var(--glass-border);box-shadow:var(--glass-shadow);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.float-stat .v{font-family:var(--font-display);font-weight:800;font-size:1.5rem;line-height:1;color:var(--text)}
+.float-stat .l{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)}
+.float-stat.fs1{top:-22px;right:-18px}
+.float-stat.fs2{bottom:-22px;left:-20px}
+
+/* marquee of tools */
+.tool-rail{margin-top:clamp(40px,5vw,70px);padding:1.1rem 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
+  display:flex;align-items:center;gap:2.4rem;flex-wrap:wrap;justify-content:center}
+.tool-rail span{font-family:var(--font-mono);font-size:.82rem;letter-spacing:.1em;color:var(--text-faint);
+  display:inline-flex;align-items:center;gap:.5rem}
+.tool-rail span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.7}
+
+/* ===========================================================
+   STAT STRIP
+   =========================================================== */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.stat-card{padding:1.7rem 1.5rem;text-align:left}
+.stat-card .num{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,3.4vw,2.8rem);
+  line-height:1;letter-spacing:-.02em}
+.stat-card .num .grad{display:inline}
+.stat-card .cap{margin-top:.55rem;color:var(--text-muted);font-size:.92rem}
+
+/* ===========================================================
+   ABOUT / NARRATIVE
+   =========================================================== */
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,4vw,3.4rem);align-items:start}
+.about-lead p{color:var(--text-muted);font-size:1.08rem;margin-bottom:1.2rem}
+.about-lead p strong{color:var(--text);font-weight:600}
+.value-cards{display:grid;gap:1rem}
+.value-card{padding:1.5rem 1.6rem;display:flex;gap:1.1rem;align-items:flex-start;transition:transform .35s var(--ease)}
+.value-card:hover{transform:translateY(-4px)}
+.value-card .vi{flex:0 0 auto;width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(56,189,248,.22),rgba(129,140,248,.22));border:1px solid var(--glass-border);color:var(--accent)}
+.value-card .vi svg{width:22px;height:22px}
+.value-card h4{font-family:var(--font-display);font-weight:700;font-size:1.08rem;margin-bottom:.3rem}
+.value-card p{color:var(--text-muted);font-size:.94rem}
+
+/* ===========================================================
+   TIMELINE
+   =========================================================== */
+.timeline{position:relative;margin-top:1rem;padding-left:0}
+.timeline::before{content:"";position:absolute;left:calc(50% - 1px);top:6px;bottom:6px;width:2px;
+  background:linear-gradient(180deg,transparent,var(--accent),var(--accent-2),transparent)}
+.tl-item{position:relative;width:50%;padding:0 3rem 2.6rem;}
+.tl-item:nth-child(odd){left:0;text-align:right}
+.tl-item:nth-child(even){left:50%}
+.tl-node{position:absolute;top:8px;width:18px;height:18px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--accent);box-shadow:0 0 0 5px rgba(56,189,248,.16);z-index:2}
+.tl-item:nth-child(odd) .tl-node{right:-9px}
+.tl-item:nth-child(even) .tl-node{left:-9px}
+.tl-card{padding:1.5rem 1.7rem;display:inline-block;text-align:left}
+.tl-card .yr{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.tl-card h4{font-family:var(--font-display);font-weight:700;font-size:1.18rem;margin:.35rem 0 .55rem}
+.tl-card p{color:var(--text-muted);font-size:.93rem;margin-bottom:.8rem}
+.tl-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tl-tags span,.chip{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.04em;padding:.28rem .6rem;border-radius:30px;
+  background:var(--chip-bg);border:1px solid var(--chip-border);color:var(--text-muted)}
+
+/* ===========================================================
+   SKILLS
+   =========================================================== */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.skill-card{padding:1.9rem;display:flex;flex-direction:column;gap:1.1rem;transition:transform .35s var(--ease)}
+.skill-card:hover{transform:translateY(-6px)}
+.skill-head{display:flex;align-items:center;gap:.9rem}
+.skill-head .si{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;flex:0 0 auto;
+  background:linear-gradient(135deg,rgba(56,189,248,.2),rgba(129,140,248,.2));border:1px solid var(--glass-border);color:var(--accent)}
+.skill-head .si svg{width:26px;height:26px}
+.skill-head h4{font-family:var(--font-display);font-weight:700;font-size:1.15rem;line-height:1.15}
+.skill-card .kicker{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint)}
+.skill-list{display:flex;flex-direction:column;gap:.7rem;margin-top:.2rem}
+.skill-row{display:flex;flex-direction:column;gap:.4rem}
+.skill-row .top{display:flex;justify-content:space-between;font-size:.9rem;color:var(--text)}
+.skill-row .top span:last-child{font-family:var(--font-mono);font-size:.72rem;color:var(--text-faint)}
+.meter{height:6px;border-radius:6px;background:var(--chip-bg);overflow:hidden;border:1px solid var(--hairline)}
+.meter i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  transition:width 1.2s var(--ease)}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto;padding-top:.4rem}
+
+/* ===========================================================
+   FEATURED PROJECT
+   =========================================================== */
+.feat-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:2.4rem}
+.badge-feat{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-2);
+  padding:.4rem .8rem;border-radius:30px;border:1px solid var(--chip-border);background:var(--chip-bg);display:inline-block;margin-bottom:1rem}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:stretch}
+.feat-narrative{padding:2rem 2.1rem;display:flex;flex-direction:column;gap:1.5rem}
+.nb{display:flex;gap:1rem;align-items:flex-start}
+.nb .tag{flex:0 0 auto;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);width:108px;padding-top:.15rem;font-weight:600}
+.nb .body{font-size:.95rem;color:var(--text-muted)}
+.nb .body strong{color:var(--text);font-weight:600}
+.nb + .nb{border-top:1px solid var(--hairline);padding-top:1.5rem}
+
+.feat-media{display:flex;flex-direction:column;gap:1.4rem}
+.media-frame{padding:12px;border-radius:var(--radius)}
+.media-frame figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--hairline);position:relative}
+.media-frame img{display:block;width:100%;height:auto;background:#0b1322}
+.media-frame figcaption{font-family:var(--font-mono);font-size:.7rem;color:var(--text-faint);padding:.7rem .9rem .2rem;letter-spacing:.03em}
+.media-2{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+
+.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.4rem}
+.metric{padding:1.3rem 1.1rem;text-align:center}
+.metric .v{font-family:var(--font-display);font-weight:800;font-size:1.7rem;line-height:1}
+.metric .l{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-top:.4rem}
+
+/* PDF embed */
+.pdf-block{margin-top:1.4rem}
+.pdf-frame{padding:12px;border-radius:var(--radius)}
+.pdf-toolbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.4rem .6rem .9rem;flex-wrap:wrap}
+.pdf-toolbar .ttl{display:flex;align-items:center;gap:.7rem;font-family:var(--font-mono);font-size:.82rem;color:var(--text-muted)}
+.pdf-toolbar .ttl svg{width:18px;height:18px;color:var(--accent)}
+.pdf-dots{display:flex;gap:.4rem}
+.pdf-dots i{width:10px;height:10px;border-radius:50%;background:var(--chip-border);display:block}
+.pdf-viewport{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--hairline);background:#222}
+.pdf-viewport iframe,.pdf-viewport object{display:block;width:100%;height:78vh;min-height:560px;border:0;background:#3a3a3a}
+.pdf-fallback{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+  text-align:center;padding:2rem;color:var(--text-muted);background:var(--bg-2)}
+
+/* ===========================================================
+   PROJECT GRID (other work)
+   =========================================================== */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+.proj-card{display:flex;flex-direction:column;overflow:hidden;transition:transform .4s var(--ease)}
+.proj-card:hover{transform:translateY(-6px)}
+.proj-card:hover .proj-thumb img{transform:scale(1.06)}
+.proj-thumb{position:relative;overflow:hidden;aspect-ratio:16/9;border-bottom:1px solid var(--hairline);background:#0b1322}
+.proj-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.proj-thumb .ptag{position:absolute;top:.9rem;left:.9rem;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.12em;
+  text-transform:uppercase;padding:.35rem .7rem;border-radius:30px;background:var(--scrim);border:1px solid var(--glass-border);
+  color:var(--text);backdrop-filter:blur(8px)}
+.proj-thumb .solo{position:absolute;top:.9rem;right:.9rem;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;
+  padding:.35rem .65rem;border-radius:30px;background:var(--scrim);border:1px solid var(--glass-border);color:var(--accent);backdrop-filter:blur(8px)}
+.proj-body{padding:1.6rem 1.7rem 1.8rem;display:flex;flex-direction:column;gap:.8rem;flex:1}
+.proj-body h4{font-family:var(--font-display);font-weight:700;font-size:1.22rem;line-height:1.2}
+.proj-body .sub{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+.proj-body p{color:var(--text-muted);font-size:.92rem}
+.proj-body .res{font-size:.9rem;color:var(--text);background:var(--chip-bg);border:1px solid var(--hairline);
+  border-radius:12px;padding:.7rem .9rem;display:flex;gap:.6rem;align-items:flex-start}
+.proj-body .res b{color:var(--accent)}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.proj-foot{margin-top:auto;display:flex;gap:.7rem;padding-top:.6rem}
+.proj-foot a{flex:1;justify-content:center;font-size:.82rem;padding:.55rem .8rem}
+.proj-split{display:grid;grid-template-columns:1.1fr 1fr;gap:0}
+
+/* ===========================================================
+   EXPERIENCE / BACKGROUND
+   =========================================================== */
+.exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.exp-card{padding:1.8rem 1.9rem;transition:transform .35s var(--ease)}
+.exp-card:hover{transform:translateY(-5px)}
+.exp-card .when{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.7rem}
+.exp-card h4{font-family:var(--font-display);font-weight:700;font-size:1.14rem;margin-bottom:.6rem;display:flex;gap:.7rem;align-items:center;line-height:1.2}
+.exp-card h4 .ei{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;flex:0 0 auto;
+  background:linear-gradient(135deg,rgba(56,189,248,.2),rgba(129,140,248,.2));border:1px solid var(--glass-border);color:var(--accent)}
+.exp-card h4 .ei svg{width:19px;height:19px}
+.exp-card p{color:var(--text-muted);font-size:.93rem;margin-bottom:.5rem}
+.exp-card p b{color:var(--text);font-weight:600}
+.exp-card .langline{font-size:.9rem;color:var(--text);margin-top:.7rem}
+.exp-card .chips-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.3rem}
+
+/* ===========================================================
+   CONTACT / FOOTER
+   =========================================================== */
+.contact-card{padding:clamp(2.4rem,5vw,4rem);text-align:center;position:relative}
+.contact-card h2{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,4.6vw,3.4rem);letter-spacing:-.02em;margin-bottom:1rem}
+.contact-card p{color:var(--text-muted);max-width:520px;margin:0 auto 2.2rem;font-size:1.05rem}
+.contact-cta{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;margin-bottom:2.4rem}
+.contact-cta .btn{padding:.85rem 1.6rem;font-size:.98rem}
+.social-row{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.social{display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;color:var(--text-muted);
+  font-size:.88rem;padding:.6rem 1.1rem;border-radius:40px;background:var(--chip-bg);border:1px solid var(--chip-border);transition:.25s}
+.social:hover{color:var(--text);border-color:var(--accent);transform:translateY(-2px)}
+.social svg{width:17px;height:17px}
+
+footer.foot{padding:2.6rem 0 3rem;border-top:1px solid var(--hairline);margin-top:clamp(60px,8vw,110px)}
+.foot-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  color:var(--text-faint);font-size:.84rem}
+.foot-inner .brand{font-size:.95rem}
+.foot-note{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em}
+
+/* ===========================================================
+   REVEAL ANIMATION
+   =========================================================== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* custom scrollbar */
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--accent),var(--accent-2));border-radius:10px;border:3px solid var(--bg)}
+
+/* ===========================================================
+   RESPONSIVE
+   =========================================================== */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:3rem}
+  .hero-visual{max-width:560px}
+  .about-grid{grid-template-columns:1fr;gap:2.4rem}
+  .feat-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr;gap:1.1rem}
+  .stat-strip{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:760px){
+  .nav-links{
+    position:absolute;top:calc(100% + 12px);left:0;right:0;flex-direction:column;align-items:stretch;gap:.2rem;
+    padding:.8rem;border-radius:24px;background:var(--nav-bg);border:1px solid var(--glass-border);
+    box-shadow:var(--glass-shadow);backdrop-filter:blur(20px);
+    transform:translateY(-12px) scale(.98);opacity:0;pointer-events:none;transition:.3s var(--ease);
+  }
+  nav.bar.open .nav-links{transform:none;opacity:1;pointer-events:auto}
+  .nav-links a{padding:.7rem 1rem}
+  .nav-toggle{display:grid}
+  .desktop-resume{display:none}
+  .timeline::before{left:9px}
+  .tl-item{width:100%;left:0!important;text-align:left!important;padding:0 0 2.2rem 2.6rem}
+  .tl-item .tl-node{left:0!important;right:auto!important}
+  .proj-grid{grid-template-columns:1fr}
+  .proj-split{grid-template-columns:1fr}
+  .exp-grid{grid-template-columns:1fr}
+  .metric-row{grid-template-columns:repeat(2,1fr)}
+  .media-2{grid-template-columns:1fr}
+  .float-stat.fs1{top:-14px;right:-6px;transform:scale(.85)}
+  .float-stat.fs2{bottom:-14px;left:-6px;transform:scale(.85)}
+  .pdf-viewport iframe,.pdf-viewport object{height:62vh;min-height:420px}
+  .hero-meta{gap:1rem}
+}
+@media (max-width:430px){
+  .stat-strip{grid-template-columns:1fr}
+  .metric-row{grid-template-columns:1fr 1fr}
+  .nb{flex-direction:column;gap:.35rem}
+  .nb .tag{width:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- background -->
+<div class="bg-field" aria-hidden="true">
+  <span class="blob b1"></span><span class="blob b2"></span>
+  <span class="blob b3"></span><span class="blob b4"></span>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="bar" id="nav">
+  <a class="brand" href="#top">
+    <span class="mark">EG</span>
+    <span>Eduardo Garcia<small>Mechanical Engineer</small></span>
+  </a>
+  <ul class="nav-links" id="navlinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#featured">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle light or dark">
+      <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+    <a class="btn desktop-resume" href="resume.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Résumé
+    </a>
+    <button class="icon-btn nav-toggle" id="navToggle" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+</nav>
+
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<header class="hero wrap">
+  <div class="hero-grid">
+    <div class="reveal in">
+      <span class="status-pill"><span class="dot"></span> BSME · University of Texas at Tyler · Expected 2027</span>
+      <h1>
+        <span class="line">Mechanical</span>
+        <span class="line grad">Engineer.</span>
+        <span class="line">Built for precision.</span>
+      </h1>
+      <p class="lead">
+        I'm <strong>Eduardo Garcia</strong>, a mechanical engineering student in Houston. I like
+        the parts of this field that ask for real precision: pulling a problem apart, working out
+        the math behind it, then checking my answer
+        <strong>in simulation and on actual hardware</strong>.
+      </p>
+      <div class="hero-cta">
+        <a class="btn" href="#featured">
+          See my work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+      <div class="hero-meta">
+        <span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6l2 4-3 2a14 14 0 0 0 6 6l2-3 4 2v6a2 2 0 0 1-2 2A18 18 0 0 1 2 5a2 2 0 0 1 0-2z" stroke-linecap="round" stroke-linejoin="round"/></svg> Simulation &amp; FEA</span>
+        <span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5z" stroke-linejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke-linejoin="round"/></svg> Design &amp; Kinematics</span>
+        <span class="m"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg> Mechatronics</span>
+      </div>
+    </div>
+
+    <div class="hero-visual glass reveal in d2">
+      <figure>
+        <img src="assets/img/FEA_Skateboard_Spring2026_p11_0.png" alt="ANSYS total deformation contour of a curved seven ply skateboard deck under a 5,000 N central load" loading="eager" />
+        <figcaption><span>ANSYS Workbench · Total Deformation</span><b>δ&nbsp;0.547&nbsp;mm</b></figcaption>
+      </figure>
+      <div class="float-stat fs1">
+        <span class="v grad">48%</span>
+        <span class="l">deflection reduced</span>
+      </div>
+      <div class="float-stat fs2">
+        <span class="v grad">340k</span>
+        <span class="l">FE elements solved</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tool-rail reveal">
+    <span>ANSYS Workbench</span>
+    <span>Explicit Dynamics</span>
+    <span>SolidWorks</span>
+    <span>Siemens NX</span>
+    <span>MATLAB</span>
+    <span>Arduino / C++</span>
+    <span>3D Printing</span>
+  </div>
+</header>
+
+<!-- ============ STAT STRIP ============ -->
+<section class="wrap" style="padding-top:0">
+  <div class="stat-strip">
+    <div class="stat-card glass reveal">
+      <div class="num"><span class="grad" data-count="6" data-suffix="">6</span></div>
+      <div class="cap">engineering projects, simulated and built</div>
+    </div>
+    <div class="stat-card glass reveal d1">
+      <div class="num"><span class="grad" data-count="1240" data-suffix="">1,240</span></div>
+      <div class="cap">pump designs compared to find the best one</div>
+    </div>
+    <div class="stat-card glass reveal d2">
+      <div class="num"><span class="grad" data-count="48" data-suffix="%">48%</span></div>
+      <div class="cap">less deflection in the redesigned deck</div>
+    </div>
+    <div class="stat-card glass reveal d3">
+      <div class="num"><span class="grad" data-count="4" data-suffix=" DOF">4 DOF</span></div>
+      <div class="cap">robotic arm I designed and coded</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="wrap">
+  <div class="about-grid">
+    <div class="about-lead reveal">
+      <span class="eyebrow">About</span>
+      <h2 class="section-title">How I think<br><span class="grad">about engineering.</span></h2>
+      <div>
+        <p>My path here wasn't a straight line. I started at Houston Community College, finished
+          my associate in engineering science, and then transferred into the mechanical
+          engineering program at UT Tyler. Somewhere along the way it clicked that I really enjoy
+          the careful, <strong>detailed</strong> side of the work.</p>
+        <p>I like problems where small mistakes actually matter. Whether I'm checking a simulation
+          against hand calculations or building an arm that has to do the same thing every single
+          time, what I care about is making something that <strong>works reliably and holds up
+          when it counts</strong>.</p>
+        <p>Down the road, I want to keep taking on harder problems where precision and reliability really matter. For now, that means pushing the engineering side as far as I can take it.</p>     </div>
+    </div>
+
+    <div class="value-cards">
+      <div class="value-card glass reveal d1">
+        <div class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/></svg></div>
+        <div><h4>Model, then check</h4><p>I don't take a simulation at face value. I check every result against theory, equilibrium, and a mesh study before I trust it.</p></div>
+      </div>
+      <div class="value-card glass reveal d2">
+        <div class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div><h4>Good with constraints</h4><p>Seal velocity limits, yield stress, a tight compute budget. I treat the limits as the actual problem to solve instead of fighting them.</p></div>
+      </div>
+      <div class="value-card glass reveal d3">
+        <div class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><h4>In it for the long game</h4><p>I'm using engineering to build the habits I'll need later, and slowly pointing the same focus toward higher stakes, more precise work.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section id="journey" class="wrap">
+  <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 3.4rem">
+    <span class="eyebrow" style="justify-content:center">My Journey</span>
+    <h2 class="section-title">From first principles<br>to <span class="grad">working hardware.</span></h2>
+    <p class="section-intro" style="margin:0 auto">The path through my degree, told through the parts I actually enjoyed at each step.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <span class="tl-node"></span>
+      <div class="tl-card glass">
+        <span class="yr">Stage 01 · Foundations</span>
+        <h4>Math that finally clicked</h4>
+        <p>Calculus, differential equations, and linear algebra were the base, but vector calculus is where it came together for me. Gradient, divergence, curl, and the integrals that describe real physical fields stopped feeling abstract.</p>
+        <div class="tl-tags"><span>Vector Fields</span><span>Multivariable Calculus</span><span>Differential Equations</span><span>Linear Algebra</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <span class="tl-node"></span>
+      <div class="tl-card glass">
+        <span class="yr">Stage 02 · Mechanics</span>
+        <h4>Engineering mechanics and materials</h4>
+        <p>Statics, dynamics, and mechanics of materials. This is where I got comfortable with free body diagrams and built the feel for stress and strain that I now use to sanity check my simulations by hand.</p>
+        <div class="tl-tags"><span>Statics &amp; Dynamics</span><span>Mechanics of Materials</span><span>Beam Theory</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <span class="tl-node"></span>
+      <div class="tl-card glass">
+        <span class="yr">Stage 03 · Computation</span>
+        <h4>Finite element analysis and CAD</h4>
+        <p>The point where the math became a tool. Solving <span style="font-family:var(--font-mono)">[K]{u}={F}</span> for real assemblies in ANSYS, building parts in SolidWorks, and running convergence studies so I could trust that the mesh wasn't fooling me.</p>
+        <div class="tl-tags"><span>ANSYS Workbench</span><span>SolidWorks</span><span>Mesh Convergence</span><span>Orthotropy</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <span class="tl-node"></span>
+      <div class="tl-card glass">
+        <span class="yr">Stage 04 · Dynamics of Machinery</span>
+        <h4>Kinematics and mechanism design</h4>
+        <p>Slider crank kinematics and full position, velocity, acceleration, and jerk analysis. I used all of it to narrow 1,240 possible pump geometries down to one design that actually worked well.</p>
+        <div class="tl-tags"><span>SVAJ Analysis</span><span>Slider Crank</span><span>Parametric Optimization</span><span>SolidWorks Motion</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <span class="tl-node"></span>
+      <div class="tl-card glass">
+        <span class="yr">Stage 05 · Mechatronics</span>
+        <h4>Sensors, control, and embedded systems</h4>
+        <p>Closing the loop. Arduino systems with several sensors, a moving average filter to clean up noisy signals, and control code written so the motion comes out the same way every time.</p>
+        <div class="tl-tags"><span>Arduino / C++</span><span>Closed Loop Control</span><span>Signal Filtering</span><span>3D Printed Parts</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <span class="tl-node"></span>
+      <div class="tl-card glass">
+        <span class="yr">Stage 06 · What's next</span>
+        <h4>Putting it together</h4>
+        <p>Pulling the simulation and the hardware together into work I can actually stand behind, and slowly aiming the same focus at higher stakes goals.</p>
+        <div class="tl-tags"><span>Systems Thinking</span><span>High Stakes Work</span><span>The Long Game</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills" class="wrap">
+  <div class="reveal">
+    <span class="eyebrow">Technical Skills</span>
+    <h2 class="section-title">What I actually<br><span class="grad">reach for.</span></h2>
+    <p class="section-intro">Three areas, each backed by the projects below. Not a checklist, just the tools I keep coming back to.</p>
+  </div>
+
+  <div class="skills-grid">
+    <!-- Simulation -->
+    <div class="skill-card glass reveal">
+      <div class="skill-head">
+        <div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 4-6"/><circle cx="7" cy="14" r="1"/><circle cx="20" cy="7" r="1"/></svg></div>
+        <div><span class="kicker">Pillar 01</span><h4>Simulation &amp; Analysis</h4></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-row"><div class="top"><span>ANSYS Workbench (Static Structural, FEA)</span><span data-skill="94">94</span></div><div class="meter"><i data-w="94"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Explicit Dynamics (impact)</span><span data-skill="82">82</span></div><div class="meter"><i data-w="82"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Modal &amp; Buckling Analysis</span><span data-skill="85">85</span></div><div class="meter"><i data-w="85"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Mesh Convergence &amp; Verification</span><span data-skill="90">90</span></div><div class="meter"><i data-w="90"></i></div></div>
+      </div>
+      <div class="tag-cloud"><span class="chip">Orthotropic Materials</span><span class="chip">Contact Mechanics</span><span class="chip">von Mises</span><span class="chip">Factor of Safety</span></div>
+    </div>
+
+    <!-- Prototyping -->
+    <div class="skill-card glass reveal d1">
+      <div class="skill-head">
+        <div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7v10l10 5 10-5V7L12 2z"/><path d="M2 7l10 5 10-5M12 12v10"/></svg></div>
+        <div><span class="kicker">Pillar 02</span><h4>Prototyping &amp; Manufacturing</h4></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-row"><div class="top"><span>SolidWorks Modeling &amp; Assemblies</span><span data-skill="92">92</span></div><div class="meter"><i data-w="92"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Siemens NX / Fusion 360 / AutoCAD</span><span data-skill="85">85</span></div><div class="meter"><i data-w="85"></i></div></div>
+        <div class="skill-row"><div class="top"><span>3D Printing and Print in Place</span><span data-skill="88">88</span></div><div class="meter"><i data-w="88"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Physical Build &amp; Wiring</span><span data-skill="86">86</span></div><div class="meter"><i data-w="86"></i></div></div>
+      </div>
+      <div class="tag-cloud"><span class="chip">Servos &amp; Actuators</span><span class="chip">Breadboarding</span><span class="chip">CAD to FEA</span><span class="chip">Iterative Design</span></div>
+    </div>
+
+    <!-- Core strengths -->
+    <div class="skill-card glass reveal d2">
+      <div class="skill-head">
+        <div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4 4 4 0 0 0-1 7 4 4 0 0 0 5 4 4 4 0 0 0 5-4 4 4 0 0 0-1-7 4 4 0 0 0-4-4z"/><path d="M12 7v11"/></svg></div>
+        <div><span class="kicker">Pillar 03</span><h4>Core Strengths</h4></div>
+      </div>
+      <div class="skill-list">
+        <div class="skill-row"><div class="top"><span>Mathematical Modeling</span><span data-skill="95">95</span></div><div class="meter"><i data-w="95"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Structural Analysis</span><span data-skill="91">91</span></div><div class="meter"><i data-w="91"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Kinematics &amp; SVAJ</span><span data-skill="89">89</span></div><div class="meter"><i data-w="89"></i></div></div>
+        <div class="skill-row"><div class="top"><span>MATLAB &amp; Python</span><span data-skill="87">87</span></div><div class="meter"><i data-w="87"></i></div></div>
+      </div>
+      <div class="tag-cloud"><span class="chip">Vector Calculus</span><span class="chip">Optimization</span><span class="chip">Controls</span><span class="chip">Technical Writing</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED PROJECT ============ -->
+<section id="featured" class="wrap">
+  <div class="feat-head reveal">
+    <div>
+      <span class="badge-feat">★ Featured Project</span>
+      <h2 class="section-title" style="margin-bottom:.4rem">Skateboard Deck FEA<br><span class="grad">Seven plies, three ways.</span></h2>
+      <p class="section-intro" style="margin-bottom:0">A three stage finite element study in ANSYS Workbench, looking at how deck curvature and material choice change the way a real skateboard holds up under a hard landing, with every number checked against classical theory.</p>
+    </div>
+    <a class="btn ghost" href="FEA_Skateboard_Spring2026.pdf.pdf" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Open full paper
+    </a>
+  </div>
+
+  <div class="feat-grid">
+    <!-- narrative -->
+    <div class="feat-narrative glass reveal">
+      <div class="nb">
+        <span class="tag">Objective</span>
+        <p class="body">Figure out how two ordinary design choices, <strong>board curvature</strong> and <strong>deck material</strong>, change the structural behavior of a full skateboard under a realistic impact, then pick the configuration that actually performs best.</p>
+      </div>
+      <div class="nb">
+        <span class="tag">Constraints</span>
+        <p class="body">A <strong>5,000 N load</strong> standing in for a 75 kg rider's two foot drop, fixed supports at all four wheels, ANSYS library materials only so anyone can reproduce it, and a single session of compute on a four core machine.</p>
+      </div>
+      <div class="nb">
+        <span class="tag">Methodology</span>
+        <p class="body">I built the full assembly in SolidWorks and brought it into ANSYS through a STEP export, then gave the <strong>seven ply maple deck</strong> orthotropic properties with custom coordinate systems for the cross grain layers. After a six point mesh convergence study I swapped the maple for an engineered <strong>carbon fiber laminate</strong> and compared. Every result was checked against classical beam theory, global equilibrium, and a factor of safety.</p>
+      </div>
+      <div class="nb">
+        <span class="tag">Roadblocks</span>
+        <p class="body">The native SolidWorks assembly and a STEP 214 export both <strong>locked the geometry in SpaceClaim</strong>. I worked through it and found STEP 203 was the only format I could still edit, which isn't documented anywhere in the release notes. The big stress spikes at the truck bolts turned out to be <strong>contact singularities</strong> rather than real failures, and the explicit impact run ran into a time step and material conflict, so I was upfront that I didn't get it finished.</p>
+      </div>
+    </div>
+
+    <!-- media -->
+    <div class="feat-media">
+      <div class="media-frame glass reveal d1">
+        <figure>
+          <img src="assets/img/FEA_Skateboard_Spring2026_p3_0.png" alt="SolidWorks engineering drawing of the skateboard deck assembly with bill of materials" loading="lazy" />
+          <figcaption>Fig. 1 · SolidWorks deck assembly drawing with bill of materials</figcaption>
+        </figure>
+      </div>
+      <div class="media-2">
+        <div class="media-frame glass reveal d2">
+          <figure>
+            <img src="assets/img/FEA_Skateboard_Spring2026_p11_2.png" alt="ANSYS equivalent elastic strain contour of the curved maple deck" loading="lazy" />
+            <figcaption>Equivalent elastic strain</figcaption>
+          </figure>
+        </div>
+        <div class="media-frame glass reveal d3">
+          <figure>
+            <img src="assets/img/FEA_Skateboard_Spring2026_p4_0.png" alt="SolidWorks engineering drawing of the truck sub assembly" loading="lazy" />
+            <figcaption>Truck sub assembly, 12 parts</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- metrics -->
+  <div class="metric-row reveal">
+    <div class="metric glass"><div class="v grad">36%</div><div class="l">less deflection from curvature</div></div>
+    <div class="metric glass"><div class="v grad">48%</div><div class="l">carbon fiber vs flat maple</div></div>
+    <div class="metric glass"><div class="v grad">0.87 to 26.5</div><div class="l">factor of safety range</div></div>
+    <div class="metric glass"><div class="v grad">&lt;0.01%</div><div class="l">equilibrium error</div></div>
+  </div>
+
+  <!-- embedded PDF -->
+  <div class="pdf-block">
+    <div class="pdf-frame glass reveal">
+      <div class="pdf-toolbar">
+        <span class="ttl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          FEA_Skateboard_Spring2026.pdf, the full 17 page paper, right here
+        </span>
+        <div style="display:flex;align-items:center;gap:1rem">
+          <a class="btn ghost" style="padding:.45rem .9rem;font-size:.8rem" href="FEA_Skateboard_Spring2026.pdf.pdf" download>Download</a>
+          <span class="pdf-dots"><i></i><i></i><i></i></span>
+        </div>
+      </div>
+      <div class="pdf-viewport">
+        <object data="FEA_Skateboard_Spring2026.pdf.pdf#view=FitH" type="application/pdf">
+          <iframe src="FEA_Skateboard_Spring2026.pdf.pdf#view=FitH" title="FEA Skateboard Deck, full technical paper"></iframe>
+        </object>
+        <div class="pdf-fallback" id="pdfFallback">
+          <p>Your browser can't show the PDF inline here.</p>
+          <a class="btn" href="FEA_Skateboard_Spring2026.pdf.pdf" target="_blank" rel="noopener">Open the paper in a new tab</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK GRID ============ -->
+<section id="work" class="wrap">
+  <div class="reveal">
+    <span class="eyebrow">Projects &amp; Papers</span>
+    <h2 class="section-title">More engineering<br><span class="grad">on the record.</span></h2>
+    <p class="section-intro">Each one has a full write up behind it. Click through if you want the details.</p>
+  </div>
+
+  <div class="proj-grid">
+
+    <!-- V90 Pump -->
+    <article class="proj-card glass reveal">
+      <div class="proj-thumb">
+        <img src="assets/img/DOM_V90Pump_Spring2026_p11_0.png" alt="SolidWorks motion model of a 90 degree twin cylinder positive displacement pump" loading="lazy" />
+        <span class="ptag">Dynamics of Machinery</span>
+      </div>
+      <div class="proj-body">
+        <span class="sub">Kinematic SVAJ Optimization</span>
+        <h4>V90 Twin Cylinder Pump</h4>
+        <p>A purely kinematic design of a 90 degree twin cylinder pump for 10 L/s at 10 bar. I swept 31 crank radii, 5 drive speeds, and 8 link ratios in MATLAB, which is 1,240 geometries, then filtered down to 291 that met every hard constraint using a weighted scoring function.</p>
+        <div class="res"><span>✦</span><span><b>Result:</b> the top design cut peak piston acceleration by 76% and velocity by 52% against the baseline, and matched my SolidWorks Motion check within 0.2%.</span></div>
+        <div class="proj-tags"><span class="chip">SVAJ</span><span class="chip">Slider Crank</span><span class="chip">MATLAB</span><span class="chip">SolidWorks Motion</span></div>
+        <div class="proj-foot">
+          <a class="btn ghost" href="DOM_V90Pump_Spring2026.pdf.pdf" target="_blank" rel="noopener">Read paper</a>
+          <a class="btn" href="DOM_V90Pump_Spring2026.pdf.pdf" download>Download</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Truss FEA -->
+    <article class="proj-card glass reveal d1">
+      <div class="proj-thumb">
+        <img src="assets/img/Lab2FEA_Spring2026_Solo_p5_3.png" alt="ANSYS total deformation contour of an optimized 3D truss structure" loading="lazy" />
+        <span class="ptag">Finite Element Analysis</span>
+        <span class="solo">Solo</span>
+      </div>
+      <div class="proj-body">
+        <span class="sub">Structural Optimization</span>
+        <h4>3D Truss FEA and Optimization</h4>
+        <p>A multi level 3D truss carrying a 95 kN load out at a cantilever node, run in ANSYS for stress, deflection, buckling, and modal response. The starting design blew past the 185 MPa yield limit with a buckling factor of safety of just 0.066, so I reworked the worst members and added cross bracing.</p>
+        <div class="res"><span>✦</span><span><b>Result:</b> deflection down by the 15% I was targeting, and the first natural frequency up 25.4% by turning bending into axial compression.</span></div>
+        <div class="proj-tags"><span class="chip">Buckling</span><span class="chip">Modal Analysis</span><span class="chip">Optimization</span><span class="chip">ANSYS</span></div>
+        <div class="proj-foot">
+          <a class="btn ghost" href="Side%20projects/Lab2FEA_Spring2026_Solo.pdf" target="_blank" rel="noopener">Read paper</a>
+          <a class="btn" href="Side%20projects/Lab2FEA_Spring2026_Solo.pdf" download>Download</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Projectile -->
+    <article class="proj-card glass reveal d2">
+      <div class="proj-thumb">
+        <img src="assets/img/Lab3_Projectile_Report_EduardoGarcia_Spring2026_solo_p1_6.png" alt="ANSYS von Mises stress contour of a bullet impact on an aluminum plate" loading="lazy" />
+        <span class="ptag">Explicit Dynamics</span>
+        <span class="solo">Solo</span>
+      </div>
+      <div class="proj-body">
+        <span class="sub">Impact and Nonlinear Materials</span>
+        <h4>Bullet Impact on an Aluminum Plate</h4>
+        <p>An ANSYS explicit dynamics study of a lead bullet hitting a 100 by 100 by 2 mm nonlinear aluminum plate at both 10 m/s and 478 m/s. I tracked displacement, reaction force, von Mises stress, and the full energy balance through the impact.</p>
+        <div class="res"><span>✦</span><span><b>Result:</b> at 10 m/s the plate held with no perforation, 3.28 mm of peak displacement, and stress leveling off around 273 MPa as the bullet's kinetic energy turned into strain energy.</span></div>
+        <div class="proj-tags"><span class="chip">Explicit Dynamics</span><span class="chip">Nonlinear Aluminum</span><span class="chip">Energy Balance</span><span class="chip">ANSYS</span></div>
+        <div class="proj-foot">
+          <a class="btn ghost" href="Side%20projects/Lab3_Projectile_Report_EduardoGarcia_Spring2026_solo.pdf" target="_blank" rel="noopener">Read paper</a>
+          <a class="btn" href="Side%20projects/Lab3_Projectile_Report_EduardoGarcia_Spring2026_solo.pdf" download>Download</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Sorting Arm -->
+    <article class="proj-card glass reveal d3">
+      <div class="proj-thumb">
+        <img src="assets/img/Mechatronics_SortingArm_Spring2026_p1_0.png" alt="Photograph of the color sorting robotic arm with Arduino controller" loading="lazy" />
+        <span class="ptag">Mechatronics</span>
+      </div>
+      <div class="proj-body">
+        <span class="sub">Robotics and Closed Loop Control</span>
+        <h4>Color Sorting Robotic Arm</h4>
+        <p>A robotic arm with four degrees of freedom, run by an Arduino, that finds an object, picks it up, and sorts it by color. A TCS34725 color sensor, an ultrasonic sensor, and a light sensor feed a fixed pick and place routine, with the ultrasonic acting as a safety check for hands in the workspace.</p>
+        <div class="res"><span>✦</span><span><b>Result:</b> it sorts red and green objects on its own and stops if a hand gets in the way, with more sensors and actuators than the assignment asked for.</span></div>
+        <div class="proj-tags"><span class="chip">4 DOF</span><span class="chip">Arduino</span><span class="chip">C++</span><span class="chip">3D Printing</span></div>
+        <div class="proj-foot">
+          <a class="btn ghost" href="Mechatronics_SortingArm_Spring2026.pdf" target="_blank" rel="noopener">Read paper</a>
+          <a class="btn" href="Mechatronics_SortingArm_Spring2026.pdf" download>Download</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Thermometer -->
+    <article class="proj-card glass reveal" style="grid-column:1/-1">
+      <div class="proj-split">
+        <div class="proj-body" style="padding:2rem 2.2rem">
+          <span class="sub">Mechatronics · Embedded</span>
+          <h4>Multi Sensor Thermometer and Alarm</h4>
+          <p>An Arduino alarm system that reads an ultrasonic sensor, an NTC 10k thermistor, and a tilt switch. A 3 point moving average filter cleans up the noise and contact bounce before any threshold logic runs, and a smart timeout handles dropped ultrasonic echoes.</p>
+          <div class="res"><span>✦</span><span><b>Result:</b> the live readings drive a 16 by 2 LCD, a brightness controlled warning LED, and a row of three red LEDs that escalate, all debounced and predictable.</span></div>
+          <div class="proj-tags"><span class="chip">Signal Filtering</span><span class="chip">Thermistor</span><span class="chip">LCD Readout</span><span class="chip">C++</span></div>
+          <div class="proj-foot" style="max-width:420px">
+            <a class="btn ghost" href="Side%20projects/ProjMecha_Spring2026_solo.pdf" target="_blank" rel="noopener">Read paper</a>
+            <a class="btn" href="Side%20projects/ProjMecha_Spring2026_solo.pdf" download>Download</a>
+          </div>
+        </div>
+        <div class="proj-thumb" style="aspect-ratio:auto;border-bottom:0;border-left:1px solid var(--hairline)">
+          <img src="assets/img/ProjMecha_Spring2026_solo_p2_1.png" alt="Photograph of the assembled multi sensor alarm breadboard with LCD readout" loading="lazy" style="object-position:center" />
+          <span class="solo">Solo</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE / BACKGROUND ============ -->
+<section id="experience" class="wrap">
+  <div class="reveal">
+    <span class="eyebrow">Beyond the Coursework</span>
+    <h2 class="section-title">Experience and<br><span class="grad">background.</span></h2>
+    <p class="section-intro">Research, a NASA design program, and where the degree comes from.</p>
+  </div>
+
+  <div class="exp-grid">
+    <div class="exp-card glass reveal">
+      <span class="when">Undergraduate Researcher · 2023</span>
+      <h4><span class="ei"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6M10 2v6.5L5 18a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9.5V2"/><path d="M7.5 14h9"/></svg></span> Rice University, REU</h4>
+      <p>I worked on carbon nanotube film thermoelectric generators, including a custom rig I helped design and build to measure Seebeck coefficient, electrical conductivity, and thermal conductivity.</p>
+      <p>I analyzed the data in MATLAB and Python and checked it against theory and published results.</p>
+    </div>
+
+    <div class="exp-card glass reveal d1">
+      <span class="when">Fall 2023</span>
+      <h4><span class="ei"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a7 7 0 0 1 7-7M3 17a11 11 0 0 1 11-11"/><circle cx="6" cy="18" r="2.5"/><path d="M14 3h7v7"/></svg></span> NASA L'SPACE Mission Concept Academy</h4>
+      <p>On a multidisciplinary team I designed and analyzed a CubeSat structural frame in Siemens NX for an Enceladus astrobiology mission.</p>
+      <p>I worked through material choices and structural requirements for deep space conditions.</p>
+    </div>
+
+    <div class="exp-card glass reveal d2">
+      <span class="when">Houston, TX</span>
+      <h4><span class="ei"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></span> Education</h4>
+      <p><b>B.S. Mechanical Engineering</b>, University of Texas at Tyler. Expected Spring 2027. Dean's List, Fall 2023.</p>
+      <p><b>A.S. Engineering Science</b>, Houston Community College. Completed Fall 2024.</p>
+    </div>
+
+    <div class="exp-card glass reveal d3">
+      <span class="when">Student Member</span>
+      <h4><span class="ei"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg></span> Affiliations and Languages</h4>
+      <div class="chips-row">
+        <span class="chip">ASME</span><span class="chip">SHPE</span><span class="chip">AIAA</span>
+      </div>
+      <p class="langline">Languages: English and Spanish, both fluent.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="wrap">
+  <div class="contact-card glass reveal">
+    <span class="eyebrow" style="justify-content:center">Contact</span>
+    <h2>Let's build something<br><span class="grad">precise.</span></h2>
+    <p>I'm open to mechanical engineering, simulation, and design roles where getting it right actually matters. My resume and every paper behind these projects are one click away.</p>
+    <div class="contact-cta">
+      <a class="btn" href="resume.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Résumé
+      </a>
+      <a class="btn ghost" href="mailto:eduardo7garcia23@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        Email me
+      </a>
+    </div>
+    <div class="social-row">
+      <a class="social" href="mailto:eduardo7garcia23@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        eduardo7garcia23@gmail.com
+      </a>
+      <a class="social" href="https://www.linkedin.com/in/eduardo-garcia-440ba0186" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 17.34V10.4H6.03v6.94h2.31zM7.19 9.4a1.34 1.34 0 1 0 0-2.68 1.34 1.34 0 0 0 0 2.68zM18 17.34v-3.8c0-2.03-1.08-2.97-2.53-2.97-1.17 0-1.69.64-1.98 1.09v-.94h-2.3c.03.65 0 6.94 0 6.94h2.3v-3.88c0-.2.02-.41.08-.56.16-.41.54-.84 1.17-.84.83 0 1.16.63 1.16 1.55v3.73H18z"/></svg>
+        LinkedIn
+      </a>
+      <span class="social" style="cursor:default">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Houston, TX
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <a class="brand" href="#top"><span class="mark">EG</span><span>Eduardo Garcia<small>BSME · UT Tyler</small></span></a>
+    <span class="foot-note">Built with care by Eduardo Garcia · © 2026</span>
+  </div>
+</footer>
+
+<script>
+/* ---------- THEME TOGGLE ---------- */
+(function(){
+  const root=document.documentElement, btn=document.getElementById('themeToggle'), icon=document.getElementById('themeIcon');
+  const sun='<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+  const moon='<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>';
+  let saved=null; try{saved=localStorage.getItem('eg-theme')}catch(e){}
+  if(saved){root.setAttribute('data-theme',saved)}
+  function sync(){const d=root.getAttribute('data-theme')==='dark';icon.innerHTML=d?moon:sun;}
+  sync();
+  btn.addEventListener('click',()=>{
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('eg-theme',next)}catch(e){}
+    sync();
+  });
+})();
+
+/* ---------- MOBILE NAV ---------- */
+(function(){
+  const nav=document.getElementById('nav'), t=document.getElementById('navToggle');
+  t.addEventListener('click',()=>nav.classList.toggle('open'));
+  document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+})();
+
+/* ---------- SCROLL REVEAL ---------- */
+(function(){
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+/* ---------- SKILL METERS ---------- */
+(function(){
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.w+'%';io.unobserve(e.target);}});
+  },{threshold:0.4});
+  document.querySelectorAll('.meter i').forEach(el=>io.observe(el));
+})();
+
+/* ---------- STAT COUNTERS ---------- */
+(function(){
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target, target=parseFloat(el.dataset.count), suf=el.dataset.suffix||'';
+      if(isNaN(target)){io.unobserve(el);return;}
+      const dur=1200, t0=performance.now();
+      function step(t){
+        const p=Math.min((t-t0)/dur,1), val=Math.floor((1-Math.pow(1-p,3))*target);
+        el.textContent=val.toLocaleString()+suf;
+        if(p<1)requestAnimationFrame(step); else el.textContent=target.toLocaleString()+suf;
+      }
+      requestAnimationFrame(step); io.unobserve(el);
+    });
+  },{threshold:0.6});
+  document.querySelectorAll('[data-count]').forEach(el=>io.observe(el));
+})();
+
+/* ---------- ACTIVE NAV ON SCROLL ---------- */
+(function(){
+  const links=[...document.querySelectorAll('#navlinks a')];
+  const map=links.map(a=>({a,sec:document.querySelector(a.getAttribute('href'))})).filter(x=>x.sec);
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const m=map.find(x=>x.sec===e.target); if(m)m.a.classList.add('active');
+    }});
+  },{rootMargin:'-45% 0px -50% 0px'});
+  map.forEach(x=>io.observe(x.sec));
+})();
+
+/* ---------- NAV SHRINK ---------- */
+(function(){
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>{nav.style.top=scrollY>40?'8px':'14px';},{passive:true});
+})();
+
+/* ---------- PDF FALLBACK (mobile / no inline PDF) ---------- */
+(function(){
+  const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if(isMobile){
+    const vp=document.querySelector('.pdf-viewport');
+    if(vp){vp.querySelectorAll('object,iframe').forEach(n=>n.style.display='none');
+      const fb=document.getElementById('pdfFallback'); if(fb)fb.style.display='flex';}
+  }
+})();
+</script>
+</body>
+</html>

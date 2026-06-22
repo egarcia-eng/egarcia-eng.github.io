@@ -1,0 +1,12 @@
+# Local tooling / preview config
+.claude/
+
+# Editable resume source (publish resume.pdf, not the Word file)
+resume.docx
+_resume.txt
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
