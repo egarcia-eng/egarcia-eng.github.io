@@ -14,4 +14,4 @@ are PDFs in the project root and in `Side projects/`.
 Open `index.html` in any modern browser.
 
 ## Live site
-https://YOUR-USERNAME.github.io
+https://egarcia-eng.github.io
