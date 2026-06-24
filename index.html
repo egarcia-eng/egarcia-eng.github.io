@@ -328,6 +328,20 @@ nav.bar{
   transition:width 1.2s var(--ease)}
 .tag-cloud{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto;padding-top:.4rem}
 
+/* scoring criteria note */
+.skill-note{margin-top:1.4rem;padding:1.5rem 1.7rem;display:flex;gap:1.2rem;align-items:flex-start}
+.skill-note .ni{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;flex:0 0 auto;
+  background:linear-gradient(135deg,rgba(56,189,248,.22),rgba(129,140,248,.22));border:1px solid var(--glass-border);color:var(--accent)}
+.skill-note .ni svg{width:21px;height:21px}
+.skill-note h5{font-family:var(--font-display);font-weight:700;font-size:1.04rem;margin-bottom:.45rem}
+.skill-note p{color:var(--text-muted);font-size:.93rem;margin-bottom:1rem}
+.skill-note p strong{color:var(--text);font-weight:600}
+.scale-legend{display:grid;gap:.55rem;margin:0;padding:0;list-style:none}
+.scale-legend li{display:flex;gap:.85rem;align-items:baseline;font-size:.9rem;color:var(--text-muted)}
+.scale-legend .band{font-family:var(--font-mono);font-size:.72rem;font-weight:600;color:var(--accent);
+  min-width:84px;flex:0 0 auto;letter-spacing:.02em}
+@media (max-width:560px){.scale-legend li{flex-direction:column;gap:.1rem}.scale-legend .band{min-width:0}}
+
 /* ===========================================================
    FEATURED PROJECT
    =========================================================== */
@@ -533,13 +547,11 @@ footer.foot{padding:2.6rem 0 3rem;border-top:1px solid var(--hairline);margin-to
       <h1>
         <span class="line">Mechanical</span>
         <span class="line grad">Engineer.</span>
-        <span class="line">Built for precision.</span>
+        <span class="line">Here to build&nbsp;<span aria-hidden="true">&lt;3</span></span>
       </h1>
       <p class="lead">
-        I'm <strong>Eduardo Garcia</strong>, a mechanical engineering student in Houston. I like
-        the parts of this field that ask for real precision: pulling a problem apart, working out
-        the math behind it, then checking my answer
-        <strong>in simulation and on actual hardware</strong>.
+        I'm <strong>Eduardo Garcia</strong>, a mechanical engineering student in Houston. I love the parts of this field that reward precision and constant optimization. Most of the time that looks like pulling a problem apart, working out the math behind it, then checking my answer
+        <strong>in simulation and on real hardware</strong>.
       </p>
       <div class="hero-cta">
         <a class="btn" href="#featured">
@@ -555,7 +567,7 @@ footer.foot{padding:2.6rem 0 3rem;border-top:1px solid var(--hairline);margin-to
       </div>
     </div>
 
-    <div class="hero-visual glass reveal in d2">
+    <div class="hero-visual glass reveal d2">
       <figure>
         <img src="assets/img/FEA_Skateboard_Spring2026_p11_0.png" alt="ANSYS total deformation contour of a curved seven ply skateboard deck under a 5,000 N central load" loading="eager" />
         <figcaption><span>ANSYS Workbench · Total Deformation</span><b>δ&nbsp;0.547&nbsp;mm</b></figcaption>
@@ -587,19 +599,19 @@ footer.foot{padding:2.6rem 0 3rem;border-top:1px solid var(--hairline);margin-to
   <div class="stat-strip">
     <div class="stat-card glass reveal">
       <div class="num"><span class="grad" data-count="6" data-suffix="">6</span></div>
-      <div class="cap">engineering projects, simulated and built</div>
+      <div class="cap">engineering projects, simulated and built in Spring 2026</div>
     </div>
     <div class="stat-card glass reveal d1">
       <div class="num"><span class="grad" data-count="1240" data-suffix="">1,240</span></div>
-      <div class="cap">pump designs compared to find the best one</div>
+      <div class="cap">pump geometries I compared to land on the best one</div>
     </div>
     <div class="stat-card glass reveal d2">
       <div class="num"><span class="grad" data-count="48" data-suffix="%">48%</span></div>
-      <div class="cap">less deflection in the redesigned deck</div>
+      <div class="cap">less deflection in the redesigned deck once I moved to a composite layup, verified in <em>FEA</em></div>
     </div>
     <div class="stat-card glass reveal d3">
       <div class="num"><span class="grad" data-count="4" data-suffix=" DOF">4 DOF</span></div>
-      <div class="cap">robotic arm I designed and coded</div>
+      <div class="cap">robotic arm I designed and coded, mostly on my own with a little help, for <em>Mechatronics</em></div>
     </div>
   </div>
 </section>
@@ -609,17 +621,14 @@ footer.foot{padding:2.6rem 0 3rem;border-top:1px solid var(--hairline);margin-to
   <div class="about-grid">
     <div class="about-lead reveal">
       <span class="eyebrow">About</span>
-      <h2 class="section-title">How I think<br><span class="grad">about engineering.</span></h2>
+      <h2 class="section-title">How did I get here?<br><span class="grad">The engineer.</span></h2>
       <div>
-        <p>My path here wasn't a straight line. I started at Houston Community College, finished
+        <p>My path here was a little unusual. I started at Houston Community College, finished
           my associate in engineering science, and then transferred into the mechanical
-          engineering program at UT Tyler. Somewhere along the way it clicked that I really enjoy
-          the careful, <strong>detailed</strong> side of the work.</p>
-        <p>I like problems where small mistakes actually matter. Whether I'm checking a simulation
-          against hand calculations or building an arm that has to do the same thing every single
-          time, what I care about is making something that <strong>works reliably and holds up
-          when it counts</strong>.</p>
-        <p>Down the road, I want to keep taking on harder problems where precision and reliability really matter. For now, that means pushing the engineering side as far as I can take it.</p>     </div>
+          engineering program at UT Tyler. Honestly though, before any of that, I already loved designing and optimizing things in every part of life. This gets a little personal, but when you grow up in a hectic first generation immigrant family, a lot of life is just trying to survive, literally and figuratively. Taking something and quietly making it work better became a real source of calm for me, a way to get a little control back. Somewhere along the way it clicked that I genuinely enjoy
+          the careful, <strong>detailed</strong> side of this work.</p>
+        <p>I like problems where small, incremental changes actually matter (stress concentrators, anyone?). What I really care about is building something that <strong>works reliably and holds up over time</strong>. I take a lot from Taiichi Ohno, the father of the Toyota Production System, and his idea that real quality comes from sweating the small stuff and improving a little at a time.</p>
+      </div>
     </div>
 
     <div class="value-cards">
@@ -715,7 +724,7 @@ footer.foot{padding:2.6rem 0 3rem;border-top:1px solid var(--hairline);margin-to
   <div class="reveal">
     <span class="eyebrow">Technical Skills</span>
     <h2 class="section-title">What I actually<br><span class="grad">reach for.</span></h2>
-    <p class="section-intro">Three areas, each backed by the projects below. Not a checklist, just the tools I keep coming back to.</p>
+    <p class="section-intro">Three areas I lean on most. The numbers are honest self assessments, and there is a short note on how I scored them right below the cards.</p>
   </div>
 
   <div class="skills-grid">
@@ -726,10 +735,10 @@ footer.foot{padding:2.6rem 0 3rem;border-top:1px solid var(--hairline);margin-to
         <div><span class="kicker">Pillar 01</span><h4>Simulation &amp; Analysis</h4></div>
       </div>
       <div class="skill-list">
-        <div class="skill-row"><div class="top"><span>ANSYS Workbench (Static Structural, FEA)</span><span data-skill="94">94</span></div><div class="meter"><i data-w="94"></i></div></div>
-        <div class="skill-row"><div class="top"><span>Explicit Dynamics (impact)</span><span data-skill="82">82</span></div><div class="meter"><i data-w="82"></i></div></div>
-        <div class="skill-row"><div class="top"><span>Modal &amp; Buckling Analysis</span><span data-skill="85">85</span></div><div class="meter"><i data-w="85"></i></div></div>
-        <div class="skill-row"><div class="top"><span>Mesh Convergence &amp; Verification</span><span data-skill="90">90</span></div><div class="meter"><i data-w="90"></i></div></div>
+        <div class="skill-row"><div class="top"><span>ANSYS Workbench (Static Structural, FEA)</span><span data-skill="88">88</span></div><div class="meter"><i data-w="88"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Explicit Dynamics (impact)</span><span data-skill="68">68</span></div><div class="meter"><i data-w="68"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Modal &amp; Buckling Analysis</span><span data-skill="80">80</span></div><div class="meter"><i data-w="80"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Mesh Convergence &amp; Verification</span><span data-skill="85">85</span></div><div class="meter"><i data-w="85"></i></div></div>
       </div>
       <div class="tag-cloud"><span class="chip">Orthotropic Materials</span><span class="chip">Contact Mechanics</span><span class="chip">von Mises</span><span class="chip">Factor of Safety</span></div>
     </div>
@@ -741,10 +750,10 @@ footer.foot{padding:2.6rem 0 3rem;border-top:1px solid var(--hairline);margin-to
         <div><span class="kicker">Pillar 02</span><h4>Prototyping &amp; Manufacturing</h4></div>
       </div>
       <div class="skill-list">
-        <div class="skill-row"><div class="top"><span>SolidWorks Modeling &amp; Assemblies</span><span data-skill="92">92</span></div><div class="meter"><i data-w="92"></i></div></div>
-        <div class="skill-row"><div class="top"><span>Siemens NX / Fusion 360 / AutoCAD</span><span data-skill="85">85</span></div><div class="meter"><i data-w="85"></i></div></div>
-        <div class="skill-row"><div class="top"><span>3D Printing and Print in Place</span><span data-skill="88">88</span></div><div class="meter"><i data-w="88"></i></div></div>
-        <div class="skill-row"><div class="top"><span>Physical Build &amp; Wiring</span><span data-skill="86">86</span></div><div class="meter"><i data-w="86"></i></div></div>
+        <div class="skill-row"><div class="top"><span>SolidWorks Modeling &amp; Assemblies</span><span data-skill="86">86</span></div><div class="meter"><i data-w="86"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Siemens NX / Fusion 360 / AutoCAD</span><span data-skill="74">74</span></div><div class="meter"><i data-w="74"></i></div></div>
+        <div class="skill-row"><div class="top"><span>3D Printing and Print in Place</span><span data-skill="82">82</span></div><div class="meter"><i data-w="82"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Physical Build &amp; Wiring</span><span data-skill="80">80</span></div><div class="meter"><i data-w="80"></i></div></div>
       </div>
       <div class="tag-cloud"><span class="chip">Servos &amp; Actuators</span><span class="chip">Breadboarding</span><span class="chip">CAD to FEA</span><span class="chip">Iterative Design</span></div>
     </div>
@@ -756,12 +765,26 @@ footer.foot{padding:2.6rem 0 3rem;border-top:1px solid var(--hairline);margin-to
         <div><span class="kicker">Pillar 03</span><h4>Core Strengths</h4></div>
       </div>
       <div class="skill-list">
-        <div class="skill-row"><div class="top"><span>Mathematical Modeling</span><span data-skill="95">95</span></div><div class="meter"><i data-w="95"></i></div></div>
-        <div class="skill-row"><div class="top"><span>Structural Analysis</span><span data-skill="91">91</span></div><div class="meter"><i data-w="91"></i></div></div>
-        <div class="skill-row"><div class="top"><span>Kinematics &amp; SVAJ</span><span data-skill="89">89</span></div><div class="meter"><i data-w="89"></i></div></div>
-        <div class="skill-row"><div class="top"><span>MATLAB &amp; Python</span><span data-skill="87">87</span></div><div class="meter"><i data-w="87"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Mathematical Modeling</span><span data-skill="90">90</span></div><div class="meter"><i data-w="90"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Structural Analysis</span><span data-skill="87">87</span></div><div class="meter"><i data-w="87"></i></div></div>
+        <div class="skill-row"><div class="top"><span>Kinematics &amp; SVAJ</span><span data-skill="85">85</span></div><div class="meter"><i data-w="85"></i></div></div>
+        <div class="skill-row"><div class="top"><span>MATLAB &amp; Python</span><span data-skill="82">82</span></div><div class="meter"><i data-w="82"></i></div></div>
       </div>
       <div class="tag-cloud"><span class="chip">Vector Calculus</span><span class="chip">Optimization</span><span class="chip">Controls</span><span class="chip">Technical Writing</span></div>
+    </div>
+  </div>
+
+  <div class="skill-note glass reveal">
+    <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg></div>
+    <div>
+      <h5>How to read these scores</h5>
+      <p>Fair question, since a number on a bar means nothing without a ruler. These are honest self assessments on a 0 to 100 scale, and I calibrated them to where I think a <strong>strong senior undergraduate</strong> should sit, not to an engineer with ten years in industry. Every number is anchored to the rubric below and backed by the graded projects further down the page, where I check the engineering against hand calculations and classical theory rather than trusting the solver. When I was unsure, I scored myself lower on purpose. <em>Explicit Dynamics</em> sits where it does because I was honest about not finishing that impact run.</p>
+      <ul class="scale-legend">
+        <li><span class="band">85 to 100</span><span>Verified, graded work I could comfortably walk someone else through.</span></li>
+        <li><span class="band">70 to 84</span><span>Independent and comfortable, used across several projects on this page.</span></li>
+        <li><span class="band">55 to 69</span><span>Solid working knowledge, still reaching for the documentation now and then.</span></li>
+        <li><span class="band">Below 55</span><span>Familiar with the tool and actively learning it.</span></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -977,7 +1000,6 @@ footer.foot{padding:2.6rem 0 3rem;border-top:1px solid var(--hairline);margin-to
   <div class="reveal">
     <span class="eyebrow">Beyond the Coursework</span>
     <h2 class="section-title">Experience and<br><span class="grad">background.</span></h2>
-    <p class="section-intro">Research, a NASA design program, and where the degree comes from.</p>
   </div>
 
   <div class="exp-grid">
@@ -1018,7 +1040,7 @@ footer.foot{padding:2.6rem 0 3rem;border-top:1px solid var(--hairline);margin-to
   <div class="contact-card glass reveal">
     <span class="eyebrow" style="justify-content:center">Contact</span>
     <h2>Let's build something<br><span class="grad">precise.</span></h2>
-    <p>I'm open to mechanical engineering, simulation, and design roles where getting it right actually matters. My resume and every paper behind these projects are one click away.</p>
+    <p>I'm open to mechanical engineering, simulation, and design roles where getting it right is what matters. My resume and every paper behind these projects are one click away.</p>
     <div class="contact-cta">
       <a class="btn" href="resume.pdf" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
